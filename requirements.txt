@@ -5,7 +5,7 @@ supervision==0.18.0
 
 opencv-python-headless==4.8.1.78
 
-numpy==1.24.4
-matplotlib==3.7.1
+numpy==2.3.5
+matplotlib==3.10.9
 
 torch --index-url https://download.pytorch.org/whl/cpu
