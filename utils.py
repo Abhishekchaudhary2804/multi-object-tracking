@@ -43,16 +43,19 @@ def print_video_info(info: dict):
 
 
 # ── Video writer ──────────────────────────────────────────────
-def make_video_writer(output_path: str, fps: float,
-                      width: int, height: int) -> cv2.VideoWriter:
-    """Create a VideoWriter, auto-creating output directory."""
-    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-    writer = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
-    if not writer.isOpened():
-        raise RuntimeError(f"Cannot open VideoWriter at: {output_path}")
-    return writer
+def make_video_writer(output_path, fps, width, height):
+    # Try browser-friendly H.264 first, then fall back to mp4v if unavailable.
+    for codec in ('avc1', 'H264', 'mp4v'):
+        fourcc = cv2.VideoWriter_fourcc(*codec)
+        writer = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
+        if writer.isOpened():
+            print(f"[Utils] Video writer opened with codec: {codec}")
+            return writer
 
+    raise RuntimeError(
+        "Could not open OpenCV VideoWriter with any supported codec. "
+        "Install the appropriate video codecs or use a different OpenCV build."
+    )
 
 # ── Heatmap ───────────────────────────────────────────────────
 class HeatmapAccumulator:
