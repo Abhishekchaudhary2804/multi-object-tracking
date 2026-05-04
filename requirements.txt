@@ -1,11 +1,11 @@
 streamlit
 
-ultralytics>=8.0.0
-supervision>=0.18.0
+ultralytics==8.2.0
+supervision==0.18.0
 
-opencv-python-headless==4.9.0.80
+opencv-python-headless==4.8.1.78
 
-numpy>=1.24.0
-matplotlib>=3.7.0
+numpy==1.24.4
+matplotlib==3.7.1
 
 torch --index-url https://download.pytorch.org/whl/cpu
