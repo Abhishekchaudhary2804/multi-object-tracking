@@ -3,5 +3,3 @@ libxrender1
 libxext6
 libsm6
 libglib2.0-0
-libffi8
-libpcre3
