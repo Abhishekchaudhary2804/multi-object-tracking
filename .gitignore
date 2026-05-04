@@ -1,0 +1,23 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Ignore only heavy models
+*.pt
+*.pth
+
+# Ignore large formats (optional)
+*.avi
+*.mkv
+
+# Allow mp4 (IMPORTANT)
+# removed *.mp4
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
